@@ -1,0 +1,10 @@
+metadata:
+  name: k8s-examples-reader-binding
+  namespace: k8s-examples
+subjects:
+  - kind: ServiceAccount
+    name: codyzeng
+    namespace: k8s-examples
+roleRef:
+  kind: Role
+  name: k8s-examples-reader

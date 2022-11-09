@@ -1,0 +1,10 @@
+metadata:
+  name: k8s-examples-cluster-reader-binding
+  namespace: k8s-examples
+subjects:
+  - kind: ServiceAccount
+    name: codyzeng
+    namespace: k8s-examples
+roleRef:
+  kind: ClusterRole
+  name: k8s-examples-cluster-reader

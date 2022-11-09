@@ -9,12 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>service-discovery-client-side</artifactId>
-
-    <properties>
-        <jkube.docker.host>tcp://172.19.29.29:2376</jkube.docker.host>
-        <jkube.docker.certPath>C:\Users\Lenovo\.minikube\certs</jkube.docker.certPath>
-    </properties>
+    <artifactId>example-service</artifactId>
 
     <build>
         <plugins>
@@ -26,8 +21,13 @@
                 <groupId>org.eclipse.jkube</groupId>
                 <artifactId>kubernetes-maven-plugin</artifactId>
                 <version>${jkube.version}</version>
+                <configuration>
+                    <namespace>k8s-examples</namespace>
+<!--                    <resources>-->
+<!--                        <serviceAccount>default</serviceAccount>-->
+<!--                    </resources>-->
+                </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>

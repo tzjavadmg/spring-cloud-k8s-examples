@@ -1,0 +1,7 @@
+metadata:
+  namespace: k8s-examples
+  name: k8s-examples-cluster-reader
+rules:
+  - apiGroups: [""]
+    resources: ["configmaps", "pods", "services", "endpoints", "secrets"]
+    verbs: ["get", "list", "watch"]

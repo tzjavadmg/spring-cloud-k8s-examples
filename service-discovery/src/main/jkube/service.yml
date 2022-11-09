@@ -1,0 +1,8 @@
+metadata:
+  namespace: k8s-examples
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      port: 8080
+      nodePort: 31000
