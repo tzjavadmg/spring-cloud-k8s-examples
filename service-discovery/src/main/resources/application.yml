@@ -6,9 +6,6 @@ spring:
         include-not-ready-addresses: true
       loadbalancer:
         mode: SERVICE
-    loadbalancer:
-      ribbon:
-        enabled: false
 
 logging:
   level:

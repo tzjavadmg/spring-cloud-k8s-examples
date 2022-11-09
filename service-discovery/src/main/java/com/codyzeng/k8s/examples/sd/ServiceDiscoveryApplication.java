@@ -14,10 +14,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableDiscoveryClient
 @EnableScheduling
 @EnableFeignClients
-public class ClientSideApplication {
+public class ServiceDiscoveryApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ClientSideApplication.class);
+        SpringApplication.run(ServiceDiscoveryApplication.class);
     }
 
 //    @Bean

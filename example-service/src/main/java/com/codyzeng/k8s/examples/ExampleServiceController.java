@@ -16,13 +16,11 @@ public class ExampleServiceController {
 
     @RequestMapping("/")
     public String hello() {
-        log.info("Hello!---------------");
         return "Hello World";
     }
 
     @RequestMapping("/login")
     public String login(String username) {
-        log.info("Hello!---------------" + username);
         return username + " login success! message from " + hostName;
     }
 

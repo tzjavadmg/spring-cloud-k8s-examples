@@ -3,17 +3,11 @@ package com.codyzeng.k8s.examples.sd;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author: codyzeng@163.com
@@ -21,7 +15,7 @@ import java.util.Map;
  */
 @Slf4j
 @RestController
-public class ClientSideController {
+public class ServiceDiscoveryController {
 
     @Resource
     private DiscoveryClient discoveryClient;
