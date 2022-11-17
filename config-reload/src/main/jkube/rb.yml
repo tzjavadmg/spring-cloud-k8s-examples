@@ -1,0 +1,8 @@
+metadata:
+  name: ${project.artifactId}-reader-bind
+roleRef:
+  kind: Role
+  name: ${project.artifactId}-reader
+subjects:
+  - kind: ServiceAccount
+    name: ${project.artifactId}

@@ -1,0 +1,17 @@
+spec:
+  template:
+    spec:
+      serviceAccount: ${project.artifactId}
+      containers:
+        - env:
+            - name: spring.datasource.username
+              valueFrom:
+                secretKeyRef:
+                  name: config-reload
+                  key: spring.datasource.username
+            - name: spring.datasource.password
+              valueFrom:
+                secretKeyRef:
+                  name: config-reload
+                  key: spring.datasource.password
+

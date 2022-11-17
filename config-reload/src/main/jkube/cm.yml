@@ -1,0 +1,7 @@
+metadata:
+  name: ${project.artifactId}
+data:
+  application.properties: |-
+    spring.datasource.driver-class-name = com.mysql.cj.jdbc.Driver
+    spring.datasource.type = com.alibaba.druid.pool.DruidDataSource
+    spring.datasource.url = jdbc:mysql://mysql-svc:3306/ecp?autoReconnect=true

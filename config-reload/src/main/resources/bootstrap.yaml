@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    kubernetes:
+      reload:
+        enabled: true
+      config:
+        name: config-reload
+        fail-fast: true
+      secrets:
+        enabled: true
+        name: config-reload
+        fail-fast: true
+#        sources:
+#          - name: config-reload
+
