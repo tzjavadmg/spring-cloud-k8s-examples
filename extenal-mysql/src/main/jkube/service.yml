@@ -1,0 +1,9 @@
+kind: Service
+metadata:
+  name: rest
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      port: 8080
+      nodePort: 30000

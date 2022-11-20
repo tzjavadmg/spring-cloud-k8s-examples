@@ -1,0 +1,6 @@
+metadata:
+  name: ${project.artifactId}-reader
+rules:
+  - apiGroups: [ "" ]
+    resources: [ "pods","configmaps",  "secrets" ]
+    verbs: [ "get", "watch", "list" ]

@@ -14,14 +14,16 @@
     <modules>
         <module>service-discovery</module>
         <module>example-service</module>
+        <module>config-reload</module>
+        <module>extenal-mysql</module>
     </modules>
     <packaging>pom</packaging>
 
     <properties>
-        <jkube.docker.host>tcp://192.168.156.84:2376</jkube.docker.host>
+        <jkube.docker.host>tcp://172.20.34.234:2376</jkube.docker.host>
         <jkube.docker.certPath>C:\Users\Lenovo\.minikube\certs</jkube.docker.certPath>
         <jkube.enricher.jkube-service.type>NodePort</jkube.enricher.jkube-service.type>
-<!--        <jkube.recreate>true</jkube.recreate>-->
+        <jkube.recreate>true</jkube.recreate>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jkube.version>1.9.1</jkube.version>
         <!-- 自定义镜像名称 -->

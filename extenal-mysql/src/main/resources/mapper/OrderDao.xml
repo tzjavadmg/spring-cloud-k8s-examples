@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.codyzeng.k8s.examples.order.dao.OrderDao">
+    <resultMap type="com.codyzeng.k8s.examples.order.entity.Order" id="OrderMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="orderNo" column="order_no" jdbcType="VARCHAR"/>
+        <result property="orderTime" column="order_time" jdbcType="TIMESTAMP"/>
+        <result property="orderType" column="order_type" jdbcType="INTEGER"/>
+        <result property="orderSource" column="order_source" jdbcType="INTEGER"/>
+        <result property="orderAmount" column="order_amount" jdbcType="VARCHAR"/>
+        <result property="productAmount" column="product_amount" jdbcType="VARCHAR"/>
+        <result property="freightAmount" column="freight_amount" jdbcType="VARCHAR"/>
+        <result property="promotionAmount" column="promotion_amount" jdbcType="VARCHAR"/>
+        <result property="couponAmount" column="coupon_amount" jdbcType="VARCHAR"/>
+        <result property="pointsAmount" column="points_amount" jdbcType="VARCHAR"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+        <result property="userPhone" column="user_phone" jdbcType="VARCHAR"/>
+        <result property="receiverName" column="receiver_name" jdbcType="VARCHAR"/>
+        <result property="receiverPhone" column="receiver_phone" jdbcType="VARCHAR"/>
+        <result property="receiverProvince" column="receiver_province" jdbcType="VARCHAR"/>
+        <result property="receiverCity" column="receiver_city" jdbcType="VARCHAR"/>
+        <result property="receiverRegion" column="receiver_region" jdbcType="VARCHAR"/>
+        <result property="receiverAddress" column="receiver_address" jdbcType="VARCHAR"/>
+        <result property="paymentMode" column="payment_mode" jdbcType="INTEGER"/>
+        <result property="paymentTime" column="payment_time" jdbcType="TIMESTAMP"/>
+        <result property="paymentAmount" column="payment_amount" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="earnPoints" column="earn_points" jdbcType="INTEGER"/>
+        <result property="usePoints" column="use_points" jdbcType="INTEGER"/>
+        <result property="deliveryTime" column="delivery_time" jdbcType="TIMESTAMP"/>
+        <result property="receiveTime" column="receive_time" jdbcType="TIMESTAMP"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into ecp.ecp_order(order_no, order_time, order_type, order_source, order_amount, product_amount,
+                                  freight_amount, promotion_amount, coupon_amount, points_amount, user_id, user_name,
+                                  user_phone, receiver_name, receiver_phone, receiver_province, receiver_city,
+                                  receiver_region, receiver_address, payment_mode, payment_time, payment_amount, status,
+                                  earn_points, use_points, delivery_time, receive_time, remark, create_time,
+                                  update_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.orderNo}, #{entity.orderTime}, #{entity.orderType}, #{entity.orderSource}, #{entity.orderAmount},
+             #{entity.productAmount}, #{entity.freightAmount}, #{entity.promotionAmount}, #{entity.couponAmount},
+             #{entity.pointsAmount}, #{entity.userId}, #{entity.userName}, #{entity.userPhone}, #{entity.receiverName},
+             #{entity.receiverPhone}, #{entity.receiverProvince}, #{entity.receiverCity}, #{entity.receiverRegion},
+             #{entity.receiverAddress}, #{entity.paymentMode}, #{entity.paymentTime}, #{entity.paymentAmount},
+             #{entity.status}, #{entity.earnPoints}, #{entity.usePoints}, #{entity.deliveryTime}, #{entity.receiveTime},
+             #{entity.remark}, #{entity.createTime}, #{entity.updateTime})
+        </foreach>
+    </insert>
+    <!-- 批量插入或按主键更新 -->
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into ecp.ecp_order(order_no, order_time, order_type, order_source, order_amount, product_amount,
+                                  freight_amount, promotion_amount, coupon_amount, points_amount, user_id, user_name,
+                                  user_phone, receiver_name, receiver_phone, receiver_province, receiver_city,
+                                  receiver_region, receiver_address, payment_mode, payment_time, payment_amount, status,
+                                  earn_points, use_points, delivery_time, receive_time, remark, create_time,
+                                  update_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.orderNo}, #{entity.orderTime}, #{entity.orderType}, #{entity.orderSource}, #{entity.orderAmount},
+             #{entity.productAmount}, #{entity.freightAmount}, #{entity.promotionAmount}, #{entity.couponAmount},
+             #{entity.pointsAmount}, #{entity.userId}, #{entity.userName}, #{entity.userPhone}, #{entity.receiverName},
+             #{entity.receiverPhone}, #{entity.receiverProvince}, #{entity.receiverCity}, #{entity.receiverRegion},
+             #{entity.receiverAddress}, #{entity.paymentMode}, #{entity.paymentTime}, #{entity.paymentAmount},
+             #{entity.status}, #{entity.earnPoints}, #{entity.usePoints}, #{entity.deliveryTime}, #{entity.receiveTime},
+             #{entity.remark}, #{entity.createTime}, #{entity.updateTime})
+        </foreach>
+        on duplicate key update order_no          = values(order_no),
+                                order_time        = values(order_time),
+                                order_type        = values(order_type),
+                                order_source      = values(order_source),
+                                order_amount      = values(order_amount),
+                                product_amount    = values(product_amount),
+                                freight_amount    = values(freight_amount),
+                                promotion_amount  = values(promotion_amount),
+                                coupon_amount     = values(coupon_amount),
+                                points_amount     = values(points_amount),
+                                user_id           = values(user_id),
+                                user_name         = values(user_name),
+                                user_phone        = values(user_phone),
+                                receiver_name     = values(receiver_name),
+                                receiver_phone    = values(receiver_phone),
+                                receiver_province = values(receiver_province),
+                                receiver_city     = values(receiver_city),
+                                receiver_region   = values(receiver_region),
+                                receiver_address  = values(receiver_address),
+                                payment_mode      = values(payment_mode),
+                                payment_time      = values(payment_time),
+                                payment_amount    = values(payment_amount),
+                                status            = values(status),
+                                earn_points       = values(earn_points),
+                                use_points        = values(use_points),
+                                delivery_time     = values(delivery_time),
+                                receive_time      = values(receive_time),
+                                remark            = values(remark),
+                                create_time       = values(create_time),
+                                update_time       = values(update_time)
+    </insert>
+</mapper>
+
